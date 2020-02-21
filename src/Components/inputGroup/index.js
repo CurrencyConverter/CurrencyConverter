@@ -27,14 +27,15 @@ const InputComponent = (props) => {
           <DropdownToggle caret>
             {dropDown}
           </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem onClick={(e) => changeDropDown(e.target.textContent)} >USD</DropdownItem>
-            <DropdownItem onClick={(e) => changeDropDown(e.target.textContent)} >EURO</DropdownItem>
-            <DropdownItem onClick={(e) => changeDropDown(e.target.textContent)}>YEN</DropdownItem>
-            <DropdownItem onClick={(e) => changeDropDown(e.target.textContent)}>BTC</DropdownItem>
+          <DropdownMenu onClick={(e) => changeDropDown(e.target.textContent)}>
+            <DropdownItem>USD</DropdownItem>
+            <DropdownItem>EURO</DropdownItem>
+            <DropdownItem>YEN</DropdownItem>
+            <DropdownItem>BTC</DropdownItem>
           </DropdownMenu>
         </InputGroupButtonDropdown>
       </InputGroup>
+
       <div>
         <Input className="amountText"/>
       </div>
