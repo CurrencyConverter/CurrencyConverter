@@ -8,6 +8,7 @@ import {
   DropdownMenu,
   DropdownItem
  } from 'reactstrap';
+import getData from '../../services/API'
 
 const InputComponent = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState();
