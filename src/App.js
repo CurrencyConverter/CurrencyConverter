@@ -10,17 +10,17 @@ import {
 function App() {
   return (
     <div className="card">
-    <Container>
-      <Row>
-        <Col>
-          <InputText placeholder="From"/>
-        </Col>
-        <Col>
-          <InputText placeholder="To"/>
-        </Col>
-      </Row>
-    </Container>
-  </div>
+      <Container>
+        <Row>
+          <Col>
+            <InputText placeholder="From"/>
+          </Col>
+          <Col>
+            <InputText placeholder="To"/>
+          </Col>
+        </Row>
+      </Container>
+    </div>
 
   );
 }
