@@ -12,7 +12,7 @@ import getData from '../../services/API'
 
 const InputComponent = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState();
-  let [dropDown, setdDropDown] = useState("Dropdown");
+  let [dropDown, setdDropDown] = useState("USD");
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
@@ -25,7 +25,7 @@ const InputComponent = (props) => {
       <InputGroup>
         <Input placeholder={props.placeholder}/>
         <InputGroupButtonDropdown addonType="append" isOpen={dropdownOpen} toggle={toggleDropDown}>
-          <DropdownToggle caret>
+          <DropdownToggle color="success" caret>
             {dropDown}
           </DropdownToggle>
           <DropdownMenu onClick={(e) => changeDropDown(e.target.textContent)}>
@@ -36,9 +36,9 @@ const InputComponent = (props) => {
           </DropdownMenu>
         </InputGroupButtonDropdown>
       </InputGroup>
-
+      <hr className="my-2" />
       <div>
-        <Input className="amountText"/>
+        <Input type="text" className="amountText"/>
       </div>
 
     </div>
