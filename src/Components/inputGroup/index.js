@@ -18,19 +18,26 @@ const InputComponent = (props) => {
     const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
     let changeDropDown = (newCurrency) => (
-        setdDropDown(newCurrency)
+        console.log("Currency set to " + newCurrency),
+        //!TODO Setting functions don't actually work!!!
+        // setdDropDown(newCurrency),
+        dropDown = newCurrency,
+        console.log("New currency is actually " + dropDown),
+        props.passCurrencyFunction(dropDown)
     );
+
+    // const transferData = async (currency1, currency2) =>
+    // {
+    //     let res = await API.getData(currency1, currency2);
+    //     console.log("THE DATA Came through", res);
+    //     data = res;
+    //     console.log('its now: ', data);
+    // };
 
     useEffect(() =>
     {
-        const transferData = async () =>
-        {
-            let res = await API.getData();
-            console.log("THE DATA Came through", res);
-            data = res;
-            console.log('its now: ', data);
-        };
-        transferData()
+
+        // transferData()
         },
         []
     );

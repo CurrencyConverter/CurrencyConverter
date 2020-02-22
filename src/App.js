@@ -7,16 +7,59 @@ import {
   Row,
   Col
  } from 'reactstrap';
+import API from "./services/API";
+let amount = 0;
+let fromCurrency = null;
+let toCurrency = null;
+let converter = null;
+let newValue = null;
+
+const convertCurrency = async () =>
+{
+  let res = await API.getData(fromCurrency, toCurrency);
+  console.log("THE converter is being obtained", res);
+  let data = res.chart.result[0].indicators.quote[0].close;
+  let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
+  converter = result;
+  console.log('its now: ', data);
+};
+
+function setFromCurrency(currency){
+  console.log("SetFromCurrency", currency);
+  fromCurrency = currency;
+}
+
+function setToCurrency(currency){
+  toCurrency = currency;
+}
+
+function getAmount(myAmount)
+{
+ amount = myAmount;
+  getNewValue();
+}
+
+function getNewValue()
+{
+  newValue = amount * converter;
+}
 function App() {
   return (
     <div className="card">
       <Container>
         <Row>
           <Col>
-            <InputText placeholder="From"/>
+            <InputText placeholder="From"
+            passCurrencyFunction={setFromCurrency}
+            passAmount={getAmount}
+            />
           </Col>
           <Col>
-            {/*<InputText placeholder="To"/>*/}
+            <InputText placeholder="To"
+            passCurrencyFunction={setToCurrency}
+            convertedValue={newValue}
+            getAmount={newValue}
+            />
           </Col>
         </Row>
       </Container>
