@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import {
   InputGroup,
@@ -8,10 +8,11 @@ import {
   DropdownMenu,
   DropdownItem
  } from 'reactstrap';
-import getData from '../../services/API'
+import API from "../../services/API";
 
 const InputComponent = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState();
+  const [data, setData] = useState([]);
   let [dropDown, setdDropDown] = useState("Dropdown");
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
@@ -19,6 +20,15 @@ const InputComponent = (props) => {
   let changeDropDown = (newCurrency) => (
       setdDropDown(newCurrency)
   );
+
+  useEffect(() => {
+    async function fetchData(input1,input2) {
+      let res = await API.getData(input1,input2);
+      setData(res);
+    }
+
+    fetchData('USD','CUP');
+  }, [data]);
 
   return (
     <div>
