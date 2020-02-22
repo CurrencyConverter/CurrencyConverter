@@ -16,7 +16,7 @@ function App() {
             <InputText placeholder="From"/>
           </Col>
           <Col>
-            <InputText placeholder="To"/>
+            {/*<InputText placeholder="To"/>*/}
           </Col>
         </Row>
       </Container>

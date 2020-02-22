@@ -6,14 +6,14 @@ const URLENDING = '=x?indicators=close&includeTimestamps=false&range=3mo&interva
 const API = {
     getData: async(currency1='USD', currency2='CUP') => {
         try {
-            await fetch(PROXY + URLBEGINNING + currency1 + currency2 + URLENDING, )
+            return await fetch(PROXY + URLBEGINNING + currency1 + currency2 + URLENDING,)
                 .then(data => data.json())
                 // .then(data => this.setState({data, loading: false}))
-                .then( (data) => {
-                    console.log('FROM API.js', data);
-                    return data;
-                }
-            )
+                .then((data) => {
+                        console.log('FROM API.js', data);
+                        return data;
+                    }
+                );
         }
         catch(e)
         {
