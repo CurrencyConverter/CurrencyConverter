@@ -24,7 +24,7 @@ const InputComponent = (props) => {
   useEffect(() => {
     async function fetchData(input1,input2) {
       //TODO fix why this aint updating
-      let res = API.getData(input1,input2);
+      let res = await API.getData(input1,input2);
       console.log("THE DATA Came through", res);
       console.log('its now: ', data);
       setData(res);

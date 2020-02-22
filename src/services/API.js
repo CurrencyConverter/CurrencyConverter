@@ -13,7 +13,7 @@ const API = {
                 // .then(data => this.setState({data, loading: false}))
                 .then( (data) => {
                     console.log('FROM API.js', data);
-                    return data;
+                    return data.data;
                 }
             )
         }
