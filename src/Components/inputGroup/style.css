@@ -1,8 +1,15 @@
 input
 {
     border: 0 !important;
+    
 }
-.amountText
+.amountText[type="text"]
 {
-    border-top: 1px solid #ced4da !important;
+    font-size: 3em;
+    font-weight: 300;
+}
+div.card 
+{
+    padding: 15px;
+    border: 0 !important;
 }
