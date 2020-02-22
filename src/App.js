@@ -30,6 +30,7 @@ function setFromCurrency(currency){
 }
 
 function setToCurrency(currency){
+  console.log("SetToCurrency", currency);
   toCurrency = currency;
 }
 
