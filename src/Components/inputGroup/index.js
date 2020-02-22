@@ -12,7 +12,7 @@ import API from "../../services/API";
 
 const InputComponent = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({empty_kids: 'empty'});
   let [dropDown, setdDropDown] = useState("Dropdown");
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
@@ -23,12 +23,15 @@ const InputComponent = (props) => {
 
   useEffect(() => {
     async function fetchData(input1,input2) {
-      let res = await API.getData(input1,input2);
+      //TODO fix why this aint updating
+      let res = API.getData(input1,input2);
+      console.log("THE DATA Came through", res);
+      console.log('its now: ', data);
       setData(res);
     }
 
     fetchData('USD','CUP');
-  }, [data]);
+  }, []);
 
   return (
     <div>

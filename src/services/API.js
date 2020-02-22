@@ -2,7 +2,8 @@
 const PROXY = 'https://cors-anywhere.herokuapp.com/';
 const URLBEGINNING = 'https://query1.finance.yahoo.com/v7/finance/chart/';
 let urlMiddle = 'USDCUP';
-const URLENDING = '=x?indicators=close&includeTimestamps=flase&range=3mo&interval=1d';
+let stateData = {};
+const URLENDING = '=x?indicators=close&includeTimestamps=false&range=3mo&interval=1d';
 
 const API = {
     getData: async(currency1, currency2) => {
