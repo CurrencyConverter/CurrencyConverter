@@ -26,6 +26,11 @@ const InputComponent = (props) => {
         props.passCurrencyFunction(dropDown)
     );
 
+    let sendAmount = (e) =>(
+        props.passAmount(e.target.value)
+    );
+
+
     // const transferData = async (currency1, currency2) =>
     // {
     //     let res = await API.getData(currency1, currency2);
@@ -41,6 +46,7 @@ const InputComponent = (props) => {
         },
         []
     );
+
 
     return (
         <div>
@@ -60,7 +66,7 @@ const InputComponent = (props) => {
             </InputGroup>
             <hr className="my-2"/>
             <div>
-                <Input type="text" className="amountText"/>
+                <Input type="text" className="amountText" onChange={(e) => sendAmount(e)}/>
             </div>
 
         </div>

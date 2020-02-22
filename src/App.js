@@ -36,7 +36,9 @@ function setToCurrency(currency){
 
 function getAmount(myAmount)
 {
+  console.log("We actually passed money to parent component");
  amount = myAmount;
+ console.log(amount);
   getNewValue();
 }
 
