@@ -13,3 +13,6 @@ div.card
     padding: 15px;
     border: 0 !important;
 }
+select#exampleSelect.form-control {
+    border: 0 !important;
+}
