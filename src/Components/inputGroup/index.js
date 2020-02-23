@@ -68,6 +68,7 @@ const InputComponent = (props) => {
             <div>
                 <Input type="text" className="amountText" onChange={(e) => sendAmount(e)}/>
             </div>
+            <hr className="my-2"/>
 
         </div>
     );
