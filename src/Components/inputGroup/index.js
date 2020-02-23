@@ -33,14 +33,6 @@ const InputComponent = (props) => {
     );
 
 
-    // const transferData = async (currency1, currency2) =>
-    // {
-    //     let res = await API.getData(currency1, currency2);
-    //     console.log("THE DATA Came through", res);
-    //     data = res;
-    //     console.log('its now: ', data);
-    // };
-
     useEffect(() =>
     {
         console.log(props);
@@ -55,7 +47,7 @@ const InputComponent = (props) => {
         <div>
            <FormGroup >
             <Label >{props.placeholder} </Label>
-            <Input type="select" name="select" id="exampleSelect"  >
+            <Input type="select" name="select" id="exampleSelect"  onClick={(e) => changeDropDown(e.target.value)}>
               <option value="USD">USD</option>
               <option value="EUR">EUR</option>
               <option value="YEN">YEN</option>
