@@ -1,12 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
 import {
-    InputGroup,
-    InputGroupButtonDropdown,
     Input,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
     FormGroup,
     Label
 } from 'reactstrap';
@@ -55,20 +50,7 @@ const InputComponent = (props) => {
               <option value="5">5</option>
             </Input>
           </FormGroup>
-            {/* <InputGroup>
-                <Input placeholder={props.placeholder +": "+ dropDown}/>
-                <InputGroupButtonDropdown addonType="append" isOpen={dropdownOpen} toggle={toggleDropDown}>
-                    <DropdownToggle color="success" caret>
-                        {dropDown}
-                    </DropdownToggle>
-                    <DropdownMenu onClick={(e) => changeDropDown(e.target.textContent)}>
-                        <DropdownItem>USD</DropdownItem>
-                        <DropdownItem>EUR</DropdownItem>
-                        <DropdownItem>YEN</DropdownItem>
-                        <DropdownItem>BTC</DropdownItem>
-                    </DropdownMenu>
-                </InputGroupButtonDropdown>
-            </InputGroup> */}
+
             <hr className="my-2"/>
             <div>
                 <Input type="text" className="amountText" placeholder="Amount" onChange={(e) => sendAmount(e)} value={convertedValue}/>
