@@ -8,10 +8,10 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-import API from "../../services/API";
 
 const InputComponent = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState();
+    let [convertedValue, setconvertedValue] = useState();
     let [data] = useState({empty_kids: 'empty'});
     let [dropDown, setdDropDown] = useState("Dropdown");
 
@@ -41,17 +41,18 @@ const InputComponent = (props) => {
 
     useEffect(() =>
     {
-
+        console.log(props);
+        convertedValue = props.convertedValue;
         // transferData()
         },
-        []
+        [props.convertedValue]
     );
 
 
     return (
         <div>
             <InputGroup>
-                <Input placeholder={props.placeholder}/>
+                <Input placeholder={props.placeholder +": "+ dropDown}/>
                 <InputGroupButtonDropdown addonType="append" isOpen={dropdownOpen} toggle={toggleDropDown}>
                     <DropdownToggle color="success" caret>
                         {dropDown}
@@ -66,7 +67,7 @@ const InputComponent = (props) => {
             </InputGroup>
             <hr className="my-2"/>
             <div>
-                <Input type="text" className="amountText" onChange={(e) => sendAmount(e)}/>
+                <Input type="text" className="amountText" onChange={(e) => sendAmount(e)} value={convertedValue}/>
             </div>
             <hr className="my-2"/>
 

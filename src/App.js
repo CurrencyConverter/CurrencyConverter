@@ -21,7 +21,9 @@ const convertCurrency = async () =>
   let data = res.chart.result[0].indicators.quote[0].close;
   let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
   converter = result;
-  console.log('its now: ', data);
+  console.log('its now: ', result);
+    getNewValue();
+  console.log("Converted Value: ", newValue)
 };
 
 function setFromCurrency(currency){
@@ -39,7 +41,7 @@ function getAmount(myAmount)
   console.log("We actually passed money to parent component");
  amount = myAmount;
  console.log(amount);
-  getNewValue();
+  convertCurrency();
 }
 
 function getNewValue()
@@ -61,7 +63,6 @@ function App() {
             <InputText placeholder="To"
             passCurrencyFunction={setToCurrency}
             convertedValue={newValue}
-            getAmount={newValue}
             />
           </Col>
         </Row>
