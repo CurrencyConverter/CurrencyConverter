@@ -7,7 +7,7 @@ import {
   Row,
   Col
  } from 'reactstrap';
-import API from "./services/API";
+import RatesAPI from "./services/ratesAPI";
 let amount = 0;
 let fromCurrency = null;
 let toCurrency = null;
@@ -16,7 +16,7 @@ let newValue = null;
 
 const convertCurrency = async () =>
 {
-  let res = await API.getData(fromCurrency, toCurrency);
+  let res = await RatesAPI.getData(fromCurrency, toCurrency);
   console.log("THE converter is being obtained", res);
   let data = res.chart.result[0].indicators.quote[0].close;
   let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
