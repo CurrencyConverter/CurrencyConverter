@@ -22,25 +22,13 @@ const InputComponent = (props) => {
         props.passAmount(e.target.value)
     );
 
-
-    useEffect( () => {
-            console.log("!!!!!!!!!!!!!!!!!!!!!!!Do we have our currencies?", props.givenCurrencies);
-            console.log(props);
-            setconvertedValue(props.convertedValue);
-            setCurrencies(props.givenCurrencies);
-            // transferData()
-        },
-        [props]
-    );
-
-
     return (
         <div>
             <FormGroup>
                 <Label>{props.placeholder} </Label>
                 <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDown(e.target.value)}>
                     {
-                        currencies.map( (currency, key) => {
+                        props.givenCurrencies.map( (currency, key) => {
                             return <option key={key} value={currency}>{currency}</option>
                         })
                     }
@@ -50,7 +38,7 @@ const InputComponent = (props) => {
             <hr className="my-2"/>
             <div>
                 <Input type="text" className="amountText" placeholder="Amount" onChange={(e) => sendAmount(e)}
-                       value={convertedValue}/>
+                       value={props.convertedValue}/>
             </div>
             <hr className="my-2"/>
 
