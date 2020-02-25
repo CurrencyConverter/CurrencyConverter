@@ -12,7 +12,6 @@ const InputComponent = (props) => {
 
     let changeDropDown = (newCurrency) => (
         console.log("Currency set to " + newCurrency),
-            //!TODO Setting functions don't actually work!!!
             setdDropDown(newCurrency),
             dropDown = newCurrency,
             console.log("New currency is actually " + dropDown),
