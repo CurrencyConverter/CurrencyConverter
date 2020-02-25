@@ -31,14 +31,16 @@ function App() {
     }
 
     const convertCurrency = async () => {
-        let res = await RatesAPI.getData(fromCurrency, toCurrency);
-        console.log("THE converter is being obtained", res);
-        let data = res.chart.result[0].indicators.quote[0].close;
-        let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
-        converter = result;
-        console.log('its now: ', result);
-        getNewValue();
-        console.log("Converted Value: ", newValue)
+        if(fromCurrency && toCurrency){
+            let res = await RatesAPI.getData(fromCurrency, toCurrency);
+            console.log("THE converter is being obtained", res);
+            let data = res.chart.result[0].indicators.quote[0].close;
+            let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
+            converter = result;
+            console.log('its now: ', result);
+            getNewValue();
+            console.log("Converted Value: ", newValue)
+        }
     };
 
     function setFromCurrency(currency) {
