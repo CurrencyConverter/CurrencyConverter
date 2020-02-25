@@ -4,7 +4,7 @@ const URLBEGINNING = 'https://query1.finance.yahoo.com/v7/finance/chart/';
 const URLENDING = '=x?indicators=close&includeTimestamps=false&range=3mo&interval=1d';
 
 const RatesAPI = {
-    getData: async(currency1='USD', currency2='CUP') => {
+    getData: async (currency1 = 'USD', currency2 = 'CUP') => {
         try {
             return await fetch(PROXY + URLBEGINNING + currency1 + currency2 + URLENDING,)
                 .then(data => data.json())
@@ -14,9 +14,7 @@ const RatesAPI = {
                         return data;
                     }
                 );
-        }
-        catch(e)
-        {
+        } catch (e) {
             console.log("SOMETHING WENT WRONG BRO O_O", e);
         }
     }

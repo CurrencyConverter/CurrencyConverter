@@ -1,18 +1,18 @@
-input
-{
+input {
     border: 0 !important;
 
 }
-.amountText[type="text"]
-{
+
+.amountText[type="text"] {
     font-size: 3em;
     font-weight: 300;
 }
-div.card 
-{
+
+div.card {
     padding: 15px;
     border: 0 !important;
 }
+
 select#exampleSelect.form-control {
     border: 0 !important;
 }
