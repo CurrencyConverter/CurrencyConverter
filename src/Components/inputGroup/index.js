@@ -5,12 +5,10 @@ import {FormGroup, Input, Label} from 'reactstrap';
 
 const InputComponent = (props) => {
 
-    const [dropdownOpen, setDropdownOpen] = useState();
     let [convertedValue, setconvertedValue] = useState();
     let [currencies, setCurrencies] = useState(["USD","EUR","YEN","BTC"]);
     let [dropDown, setdDropDown] = useState("Dropdown");
 
-    const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
     let changeDropDown = (newCurrency) => (
         console.log("Currency set to " + newCurrency),
@@ -33,7 +31,7 @@ const InputComponent = (props) => {
             setCurrencies(props.givenCurrencies);
             // transferData()
         },
-        []
+        [props]
     );
 
 
