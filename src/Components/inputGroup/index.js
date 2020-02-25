@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './style.css';
 import {FormGroup, Input, Label} from 'reactstrap';
 
 
 const InputComponent = (props) => {
 
-    let [convertedValue, setconvertedValue] = useState();
-    let [currencies, setCurrencies] = useState(["USD","EUR","YEN","BTC"]);
     let [dropDown, setdDropDown] = useState("Dropdown");
 
 
