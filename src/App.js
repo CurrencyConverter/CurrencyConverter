@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import InputText from './Components/inputGroup'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -13,7 +13,7 @@ function App(props) {
     let fromCurrency = null;
     let toCurrency = null;
     let converter = null;
-    let newValue = null;
+    let[newValue, setnewValue] = useState(null);
 
     const getCurrencies = async () => {
         currencies = await currencyAPI.getData();
@@ -30,11 +30,12 @@ function App(props) {
         })
     }
 
-    const convertCurrency = async () => {
+    let convertCurrency = async () => {
         if(fromCurrency && toCurrency){
             let res = await RatesAPI.getData(fromCurrency, toCurrency);
             if(res.chart.result == null)
             {
+                //TODO SOME CONVERSION EXIST WHY ? IDK
                 console.log("THIS CONVERSION DOES NOT EXIST");
             }
             else
@@ -45,7 +46,12 @@ function App(props) {
                 converter = result;
                 console.log('its now: ', result);
                 newValue = amount * converter;
+                //TODO REVIew
+                //Makes input group re render loosing the selection
+                setnewValue(amount * converter)
+
                 console.log("Converted Value: ", newValue)
+                return newValue;
             }
         }
     };
@@ -78,6 +84,9 @@ function App(props) {
         fetchData();
     }, [currenciesArray]); // Or [] if effect doesn't need props or state
 
+    useEffect(() => {
+        console.log("****NEWBALUE IS***", newValue);
+    }, [newValue]);
 
     return (
         <div className="card">

@@ -6,7 +6,7 @@ import {FormGroup, Input, Label} from 'reactstrap';
 const InputComponent = (props) => {
 
     let [dropDown, setdDropDown] = useState("Dropdown");
-
+    let [myval, setdmyval] = useState();
 
     let changeDropDown = (newCurrency) => (
         console.log("Currency set to " + newCurrency),
@@ -16,17 +16,14 @@ const InputComponent = (props) => {
             props.passCurrencyFunction(dropDown)
     );
 
-    let sendAmount = (e) => (
+    let sendAmount = async(e) => (
         props.passAmount(e.target.value)
+
+        //TODO Actually changes the value
+        // await setdmyval(this.props.convertedValue),
+        // console.log("******should have been set", props.convertedValue)
     );
 
-
-    useEffect(() => {
-        async function fetchData() {
-            console.log("!!!!Value calculated ",props.convertedValue)
-        }
-        fetchData();
-    }, [props]); // Or [] if effect doesn't need props or state
 
     return (
         <div>
@@ -43,7 +40,7 @@ const InputComponent = (props) => {
 
             <hr className="my-2"/>
             <div>
-                <Input type="text" className="amountText" placeholder="Amount" onChange={(e) => sendAmount(e)}
+                <Input type="text" className="amountText" placeholder={"Value"} onChange={(e) => sendAmount(e)}
                        value={props.convertedValue}/>
             </div>
             <hr className="my-2"/>
