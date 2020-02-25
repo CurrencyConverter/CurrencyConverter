@@ -8,7 +8,6 @@ const InputComponent = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState();
     let [convertedValue, setconvertedValue] = useState();
     let [currencies, setCurrencies] = useState(["USD","EUR","YEN","BTC"]);
-    let [data] = useState({empty_kids: 'empty'});
     let [dropDown, setdDropDown] = useState("Dropdown");
 
     const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
