@@ -54,7 +54,7 @@ const InputComponent = (props) => {
             <hr className="my-2"/>
             <div>
                 <Input type="text" className="amountText" placeholder="Amount" onChange={(e) => sendAmount(e)}
-                       value={""}/>
+                       value={convertedValue}/>
             </div>
             <hr className="my-2"/>
 
