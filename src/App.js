@@ -6,7 +6,7 @@ import {Col, Container, Row} from 'reactstrap';
 import RatesAPI from "./services/ratesAPI";
 import currencyAPI from "./services/currencyAPI";
 
-function App() {
+function App(props) {
     let currenciesArray = [];
     let currencies = [];
     let amount = 0;
@@ -33,13 +33,20 @@ function App() {
     const convertCurrency = async () => {
         if(fromCurrency && toCurrency){
             let res = await RatesAPI.getData(fromCurrency, toCurrency);
-            console.log("THE converter is being obtained", res);
-            let data = res.chart.result[0].indicators.quote[0].close;
-            let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
-            converter = result;
-            console.log('its now: ', result);
-            getNewValue();
-            console.log("Converted Value: ", newValue)
+            if(res.chart.result == null)
+            {
+                console.log("THIS CONVERSION DOES NOT EXIST");
+            }
+            else
+            {
+                console.log("THE converter is being obtained", res);
+                let data = res.chart.result[0].indicators.quote[0].close;
+                let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
+                converter = result;
+                console.log('its now: ', result);
+                newValue = amount * converter;
+                console.log("Converted Value: ", newValue)
+            }
         }
     };
 
@@ -60,10 +67,6 @@ function App() {
         convertCurrency();
     }
 
-    function getNewValue() {
-        newValue = amount * converter;
-    }
-
     useEffect(() => {
         async function fetchData() {
             // You can await here
@@ -74,7 +77,6 @@ function App() {
         }
         fetchData();
     }, [currenciesArray]); // Or [] if effect doesn't need props or state
-
 
 
     return (

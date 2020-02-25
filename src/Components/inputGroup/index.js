@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 import {FormGroup, Input, Label} from 'reactstrap';
 
@@ -19,6 +19,14 @@ const InputComponent = (props) => {
     let sendAmount = (e) => (
         props.passAmount(e.target.value)
     );
+
+
+    useEffect(() => {
+        async function fetchData() {
+            console.log("!!!!Value calculated ",props.convertedValue)
+        }
+        fetchData();
+    }, [props]); // Or [] if effect doesn't need props or state
 
     return (
         <div>
