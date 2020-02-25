@@ -34,7 +34,7 @@ const InputComponent = (props) => {
             setCurrencies(props.givenCurrencies);
             // transferData()
         },
-        [currencies]
+        []
     );
 
 
