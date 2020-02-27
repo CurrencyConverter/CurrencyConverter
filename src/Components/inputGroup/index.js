@@ -27,6 +27,7 @@ const InputComponent = (props) => {
 
     return (
         <div>
+            Comment
             <FormGroup>
                 <Label>{props.placeholder} </Label>
                 <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDown(e.target.value)}>
