@@ -102,13 +102,13 @@ function App(props) {
                                    givenCurrencies={currenciesArray}
                         />
                     </Col>
-                    <Col>
-                        <InputText placeholder="To"
-                                   passCurrencyFunction={setToCurrency}
-                                   convertedValue={newValue}
-                                   givenCurrencies={currenciesArray}
-                        />
-                    </Col>
+                    {/*<Col>*/}
+                    {/*    <InputText placeholder="To"*/}
+                    {/*               passCurrencyFunction={setToCurrency}*/}
+                    {/*               convertedValue={newValue}*/}
+                    {/*               givenCurrencies={currenciesArray}*/}
+                    {/*    />*/}
+                    {/*</Col>*/}
                 </Row>
             </Container>
         </div>

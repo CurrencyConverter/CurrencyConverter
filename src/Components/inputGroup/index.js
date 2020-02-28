@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react';
 import './style.css';
 import {FormGroup, Input, Label} from 'reactstrap';
 
+const currencyFlag = require('currency-codes-ru-en-names');
 
 const InputComponent = (props) => {
 
     let [dropDown, setdDropDown] = useState("Dropdown");
     let [myval, setdmyval] = useState();
+    let [myCurrencies] = useState(props.givenCurrencies)
 
     let changeDropDown = (newCurrency) => (
         console.log("Currency set to " + newCurrency),
@@ -27,18 +29,20 @@ const InputComponent = (props) => {
 
     return (
         <div>
-            Comment
+            <p>test {currencyFlag.names("USD", "en")}</p>
+            {/*{console.log("HERE",myCurrencies.length)}*/}
             <FormGroup>
                 <Label>{props.placeholder} </Label>
                 <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDown(e.target.value)}>
                     {
                         props.givenCurrencies.map( (currency, key) => {
-                            return <option key={key} value={currency}>{currency}</option>
+                            console.log(currency + key + " - ", typeof currencyFlag.names(currency, "en") == 'string'? currencyFlag.names("" + currency, "en") : "test")
+                            // return <option key={key} value={currency}>{currency} - {currencyFlag.names("" + currency, "en")}</option>
                         })
                     }
+
                 </Input>
             </FormGroup>
-
             <hr className="my-2"/>
             <div>
                 <Input type="text" className="amountText" placeholder={"Value"} onChange={(e) => sendAmount(e)}
