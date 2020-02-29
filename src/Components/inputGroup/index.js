@@ -4,16 +4,19 @@ import {Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import RatesAPI from "../../services/ratesAPI";
 
 const currencyFlag = require('currency-codes-ru-en-names');
+let fromCurrency = "";
+let toCurrency = "";
+
+let amount = 0;
+
+
 
 const InputComponent = (props) => {
-
-    let [dropDown, setdDropDown] = useState("Dropdown");
     let [myval, setdmyval] = useState();
-    let amount = 0;
-    let fromCurrency = "";
-    let toCurrency = "";
+
 
     let convertCurrency = async () => {
+        console.log("I HOPE THIS ISNT BEING CALLED AUTOMATICALLY")
         if(fromCurrency && toCurrency){
             let res = await RatesAPI.getData(fromCurrency, toCurrency);
             if(res.chart.result == null)
@@ -31,6 +34,7 @@ const InputComponent = (props) => {
             }
         }
     };
+
 
     let changeDropDownTo = (newCurrency) => (
         toCurrency = newCurrency,
@@ -86,7 +90,7 @@ const InputComponent = (props) => {
                         <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
                                 props.givenCurrencies.map( (currency, key) => {
-                                    // console.log(currency + key + " - ", typeof currencyFlag.names(currency, "en") == 'string'? currencyFlag.names("" + currency, "en") : "test")
+                                    console.log(currency)
                                     return <option key={key} value={currency}>{currency}</option>
                                 })
                             }
