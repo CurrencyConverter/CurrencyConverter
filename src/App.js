@@ -8,26 +8,26 @@ import currencyAPI from "./services/currencyAPI";
 
 function App(props) {
     let currenciesArray = [];
-    let currencies = [];
+    // let currencies = [];
     let amount = 0;
     let fromCurrency = null;
     let toCurrency = null;
     let converter = null;
     let[newValue, setnewValue] = useState(null);
 
-    const getCurrencies = async () => {
-        currencies = await currencyAPI.getData();
-        console.log('Currencies in this function', currencies);
-    };
-
-    function randomFunction() {
-        for (const property in currencies) {
-            currenciesArray.push(property);
-        }
-        currenciesArray.map(currency => {
-            return currency;
-        })
-    }
+    // const getCurrencies = async () => {
+    //     currencies = await currencyAPI.getData();
+    //     console.log('Currencies in this function', currencies);
+    // };
+    //
+    // function randomFunction() {
+    //     for (const property in currencies) {
+    //         currenciesArray.push(property);
+    //     }
+    //     currenciesArray.map(currency => {
+    //         return currency;
+    //     })
+    // }
 
     let convertCurrency = async () => {
         if(fromCurrency && toCurrency){
@@ -71,23 +71,23 @@ function App(props) {
         convertCurrency();
     }
 
-    useEffect(() => {
-        async function fetchData() {
-            // You can await here
-            await getCurrencies();
-            console.log("App.js reloaded due to currencies?", currencies);
-            randomFunction();
-            console.log("CURRENCIES ARRAY CHECK",currenciesArray)
-        }
-        fetchData();
-    }, [currenciesArray]); // Or [] if effect doesn't need props or state
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         // You can await here
+    //         await getCurrencies();
+    //         console.log("App.js reloaded due to currencies?", currencies);
+    //         randomFunction();
+    //         console.log("CURRENCIES ARRAY CHECK",currenciesArray)
+    //     }
+    //     fetchData();
+    // }, [currenciesArray]); // Or [] if effect doesn't need props or state
 
     return (
         <div className="card">
             <Container>
-                {
-                    randomFunction()
-                }
+                {/*{*/}
+                {/*    randomFunction()*/}
+                {/*}*/}
                         <InputText placeholderFrom="From"
                                    placeholderTo="To"
                                    passCurrencyToFunction={setFromCurrency}

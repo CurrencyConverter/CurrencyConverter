@@ -1,19 +1,45 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 import {Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import RatesAPI from "../../services/ratesAPI";
+import currencyAPI from "../../services/currencyAPI";
 
 const currencyFlag = require('currency-codes-ru-en-names');
-let fromCurrency = "";
-let toCurrency = "";
-
-let amount = 0;
-
 
 
 const InputComponent = (props) => {
     let [myval, setdmyval] = useState();
+    let fromCurrency = "";
+    let toCurrency = "";
+    let currenciesObject = [];
+    let amount = 0;
+    let [currencies, setCurrencies] = useState(["lol"]);
 
+    const getCurrencies = async () => {
+        currenciesObject = await currencyAPI.getData();
+        randomFunction()
+        console.log('Currencies in this function', currencies);
+    };
+
+    function randomFunction() {
+        let currenciesArray = []
+        console.log("trackcall");
+        for (const property in currenciesObject) {
+            currenciesArray.push(property);
+        }
+
+        currenciesArray.map(currency => {
+            return currency;
+        })
+        console.log("Filled?", currenciesArray);
+        setCurrencies(currenciesArray);
+    }
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        getCurrencies();
+    },[]
+    );
 
     let convertCurrency = async () => {
         console.log("I HOPE THIS ISNT BEING CALLED AUTOMATICALLY")
@@ -77,7 +103,7 @@ const InputComponent = (props) => {
         // console.log("******should have been set", props.convertedValue)
     );
 
-    console.log("Why am I getting fucked now?", props.givenCurrencies)
+    console.log("Why am I getting fucked now?", currencies)
     return (
         <Row>
             <Col>
@@ -89,8 +115,8 @@ const InputComponent = (props) => {
                         <Label>{props.placeholderFrom} </Label>
                         <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
-                                props.givenCurrencies.map( (currency, key) => {
-                                    console.log(currency)
+                                currencies.map( (currency, key) => {
+                                    console.log(currency);
                                     return <option key={key} value={currency}>{currency}</option>
                                 })
                             }
