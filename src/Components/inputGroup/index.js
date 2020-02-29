@@ -4,7 +4,7 @@ import {Col, FormGroup, Input, Label, Row} from 'reactstrap';
 import RatesAPI from "../../services/ratesAPI";
 import currencyAPI from "../../services/currencyAPI";
 
-const currencyFlag = require('currency-codes-ru-en-names');
+// const currencyFlag = require('currency-codes-ru-en-names');
 
 
 const InputComponent = (props) => {
@@ -109,7 +109,7 @@ const InputComponent = (props) => {
             <Col>
                 {/*From*/}
                 <div>
-                    <p>Test? {currencyFlag.names("USD", "en")}</p>
+                    {/* <p>Test? {currencyFlag.names("USD", "en")}</p> */}
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
                         <Label>{props.placeholderFrom} </Label>
@@ -137,7 +137,7 @@ const InputComponent = (props) => {
             {/*To*/}
             <Col>
                 <div>
-                    <p>test {currencyFlag.names("USD", "en")}</p>
+                    {/* <p>test {currencyFlag.names("USD", "en")}</p> */}
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
                         <Label>{props.placeholderTo} </Label>
