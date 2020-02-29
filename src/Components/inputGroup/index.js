@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './style.css';
 import {Col, FormGroup, Input, Label, Row} from 'reactstrap';
+import RatesAPI from "../../services/ratesAPI";
 
 const currencyFlag = require('currency-codes-ru-en-names');
 
@@ -8,41 +9,71 @@ const InputComponent = (props) => {
 
     let [dropDown, setdDropDown] = useState("Dropdown");
     let [myval, setdmyval] = useState();
-    let [myCurrencies] = useState(props.givenCurrencies)
+    let amount = 0;
+    let fromCurrency = "";
+    let toCurrency = "";
+
+    let convertCurrency = async () => {
+        if(fromCurrency && toCurrency){
+            let res = await RatesAPI.getData(fromCurrency, toCurrency);
+            if(res.chart.result == null)
+            {
+                //TODO SOME CONVERSION EXIST WHY ? IDK
+                console.log("THIS CONVERSION DOES NOT EXIST");
+            }
+            else
+            {
+                console.log("THE converter is being obtained", res);
+                let data = res.chart.result[0].indicators.quote[0].close;
+                let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
+                myval = result;
+                console.log('Local myval is: ', myval);
+            }
+        }
+    };
 
     let changeDropDownTo = (newCurrency) => (
-        console.log("CurrencyTO set to " + newCurrency),
-            setdDropDown(newCurrency),
-            dropDown = newCurrency,
-            console.log("New currencyTO is actually " + dropDown),
-            props.passCurrencyToFunction(dropDown)
+        toCurrency = newCurrency,
+        console.log("Local toCurrency: ", toCurrency)
+
+        // console.log("CurrencyTO set to " + newCurrency),
+        //     setdDropDown(newCurrency),
+        //     dropDown = newCurrency,
+        //     console.log("New currencyTO is actually " + dropDown),
+        //     props.passCurrencyToFunction(dropDown)
 
     );
 
     let changeDropDownFrom = (newCurrency) => (
-        console.log("CurrencyFROM set to " + newCurrency),
-            setdDropDown(newCurrency),
-            dropDown = newCurrency,
-            console.log("New currencyFROM is actually " + dropDown),
-            props.passCurrencyFromFunction(dropDown)
+        fromCurrency = newCurrency,
+        console.log("Local fromCurrency: ", fromCurrency)
+
+        // console.log("CurrencyFROM set to " + newCurrency),
+        //     setdDropDown(newCurrency),
+        //     dropDown = newCurrency,
+        //     console.log("New currencyFROM is actually " + dropDown),
+        //     props.passCurrencyFromFunction(dropDown)
 
     );
 
     let sendAmount = async(e) => (
-        props.passAmount(e.target.value),
 
-        setTimeout(function()
-        { //Start the timer
-            // setdmyval(props.convertedValue);
-            console.log("*******THIS IS convertedValue: ", props.convertedValue);
-            //After 2 seconds, set render to true
-        }, 2000)
+        amount = e.target.value,
+        await convertCurrency()
+        // props.passAmount(e.target.value),
+        //
+        // setTimeout(function()
+        // { //Start the timer
+        //     // setdmyval(props.convertedValue);
+        //     console.log("*******THIS IS convertedValue: ", props.convertedValue);
+        //     //After 2 seconds, set render to true
+        // }, 2000)
         //TODO Actually changes the value
         // await setdmyval(this.props.convertedValue),
         // console.log("******should have been set", props.convertedValue)
     );
 
-
+    console.log("Why am I getting fucked now?", props.givenCurrencies)
     return (
         <Row>
             <Col>
