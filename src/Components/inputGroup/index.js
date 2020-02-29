@@ -116,7 +116,7 @@ const InputComponent = (props) => {
                         <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
                                 currencies.map( (currency, key) => {
-                                    console.log(currency);
+                                    // console.log(currency);
                                     return <option key={key} value={currency}>{currency}</option>
                                 })
                             }
@@ -143,7 +143,7 @@ const InputComponent = (props) => {
                         <Label>{props.placeholderTo} </Label>
                         <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownFrom(e.target.value)}>
                             {
-                                props.givenCurrencies.map( (currency, key) => {
+                                currencies.map( (currency, key) => {
                                     // console.log(currency + key + " - ", typeof currencyFlag.names(currency, "en") == 'string'? currencyFlag.names("" + currency, "en") : "test")
                                     return <option key={key} value={currency}>{currency}</option>
                                 })
