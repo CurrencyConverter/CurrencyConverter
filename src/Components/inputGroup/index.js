@@ -9,8 +9,8 @@ import currencyAPI from "../../services/currencyAPI";
 
 const InputComponent = (props) => {
     let [myval, setmyval] = useState();
-    let fromCurrency = "";
-    let toCurrency = "";
+    let [fromCurrency, setfromCurrency] = useState("")
+    let [toCurrency, settoCurrency] = useState("");
     let currenciesObject = [];
     let amount = 0;
     let [currencies, setCurrencies] = useState(["lol"]);
@@ -43,6 +43,8 @@ const InputComponent = (props) => {
 
     let convertCurrency = async () => {
         console.log("I HOPE THIS ISNT BEING CALLED AUTOMATICALLY")
+        console.log("FromCurrency: ", fromCurrency)
+        console.log("ToCurrency: ", toCurrency)
         if(fromCurrency && toCurrency){
             let res = await RatesAPI.getData(fromCurrency, toCurrency);
             if(res.chart.result == null)
@@ -65,6 +67,7 @@ const InputComponent = (props) => {
 
     let changeDropDownTo = (newCurrency) => (
         toCurrency = newCurrency,
+        settoCurrency(newCurrency),
         console.log("Local toCurrency: ", toCurrency)
 
         // console.log("CurrencyTO set to " + newCurrency),
@@ -77,6 +80,7 @@ const InputComponent = (props) => {
 
     let changeDropDownFrom = (newCurrency) => (
         fromCurrency = newCurrency,
+        setfromCurrency(newCurrency),
         console.log("Local fromCurrency: ", fromCurrency)
 
         // console.log("CurrencyFROM set to " + newCurrency),
@@ -114,7 +118,7 @@ const InputComponent = (props) => {
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
                         <Label>{props.placeholderFrom} </Label>
-                        <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
+                        <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownFrom(e.target.value)}>
                             {
                                 currencies.map( (currency, key) => {
                                     // console.log(currency);
@@ -142,7 +146,7 @@ const InputComponent = (props) => {
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
                         <Label>{props.placeholderTo} </Label>
-                        <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownFrom(e.target.value)}>
+                        <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
                                 currencies.map( (currency, key) => {
                                     // console.log(currency + key + " - ", typeof currencyFlag.names(currency, "en") == 'string'? currencyFlag.names("" + currency, "en") : "test")
