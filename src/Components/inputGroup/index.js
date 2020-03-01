@@ -69,43 +69,17 @@ const InputComponent = (props) => {
         toCurrency = newCurrency,
         settoCurrency(newCurrency),
         console.log("Local toCurrency: ", toCurrency)
-
-        // console.log("CurrencyTO set to " + newCurrency),
-        //     setdDropDown(newCurrency),
-        //     dropDown = newCurrency,
-        //     console.log("New currencyTO is actually " + dropDown),
-        //     props.passCurrencyToFunction(dropDown)
-
     );
 
     let changeDropDownFrom = (newCurrency) => (
         fromCurrency = newCurrency,
         setfromCurrency(newCurrency),
         console.log("Local fromCurrency: ", fromCurrency)
-
-        // console.log("CurrencyFROM set to " + newCurrency),
-        //     setdDropDown(newCurrency),
-        //     dropDown = newCurrency,
-        //     console.log("New currencyFROM is actually " + dropDown),
-        //     props.passCurrencyFromFunction(dropDown)
-
     );
 
     let sendAmount = async(e) => (
-
         amount = e.target.value,
         await convertCurrency()
-        // props.passAmount(e.target.value),
-        //
-        // setTimeout(function()
-        // { //Start the timer
-        //     // setdmyval(props.convertedValue);
-        //     console.log("*******THIS IS convertedValue: ", props.convertedValue);
-        //     //After 2 seconds, set render to true
-        // }, 2000)
-        //TODO Actually changes the value
-        // await setdmyval(this.props.convertedValue),
-        // console.log("******should have been set", props.convertedValue)
     );
 
     console.log("Why am I getting fucked now?", currencies)
@@ -149,7 +123,6 @@ const InputComponent = (props) => {
                         <Input type="select" name="select" id="exampleSelect" onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
                                 currencies.map( (currency, key) => {
-                                    // console.log(currency + key + " - ", typeof currencyFlag.names(currency, "en") == 'string'? currencyFlag.names("" + currency, "en") : "test")
                                     return <option key={key} value={currency}>{currency}</option>
                                 })
                             }
