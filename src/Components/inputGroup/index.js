@@ -8,7 +8,7 @@ import currencyAPI from "../../services/currencyAPI";
 
 
 const InputComponent = (props) => {
-    let [myval, setdmyval] = useState();
+    let [myval, setmyval] = useState();
     let fromCurrency = "";
     let toCurrency = "";
     let currenciesObject = [];
@@ -55,7 +55,8 @@ const InputComponent = (props) => {
                 console.log("THE converter is being obtained", res);
                 let data = res.chart.result[0].indicators.quote[0].close;
                 let result = res.chart.result[0].indicators.quote[0].close[data.length - 1];
-                myval = result;
+                myval = result * amount;
+                setmyval(myval)
                 console.log('Local myval is: ', myval);
             }
         }
@@ -153,7 +154,7 @@ const InputComponent = (props) => {
                     </FormGroup>
                     <hr className="my-2"/>
                     <div>
-                        <Input disabled type="text" className="amountText" placeholder={"Converted Value"}
+                        <Input disabled type="text" id="converted" className="amountText" placeholder={"Converted Value"}
                                value={myval}/>
                     </div>
                     <hr className="my-2"/>
