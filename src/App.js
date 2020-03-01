@@ -11,7 +11,7 @@ function App() {
             <Container>
                 <InputText
                     placeholderFrom="From"
-                   placeholderTo="To"
+                    placeholderTo="To"
                 />
             </Container>
         </div>
