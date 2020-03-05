@@ -1,0 +1,18 @@
+.img {
+    float: left;
+    margin-left: 1.5em;
+    width: 75px;
+}
+.header {
+    margin: 5px;
+}
+.title {
+    padding: 0.5em;
+    margin-left: 5em;
+    font-size: 25px;
+    color: rgb(102, 64, 207);
+    font-weight: 500;
+}
+.my-2.headerLine {
+    margin-left: 8.5em;
+}

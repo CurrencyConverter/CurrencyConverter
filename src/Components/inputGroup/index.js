@@ -13,7 +13,7 @@ const InputComponent = (props) => {
     let [toCurrency, settoCurrency] = useState("");
     let currenciesObject = [];
     let amount = 0;
-    let [currencies, setCurrencies] = useState(["lol"]);
+    let [currencies, setCurrencies] = useState(["default"]);
 
     const getCurrencies = async () => {
         currenciesObject = await currencyAPI.getData();
@@ -88,8 +88,8 @@ const InputComponent = (props) => {
                     {/* <p>Test? {currencyFlag.names("USD", "en")}</p> */}
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
-                        <Label>{props.placeholderFrom} </Label>
-                        <Input type="select" name="select" id="exampleSelect"
+                        <Label className= "placeholderText" >{props.placeholderFrom} </Label>
+                        <Input style= {{backgroundColor: "rgba(102, 64, 207, 0.9)", color: "white"}} type="select" name="select" id="exampleSelect"
                                onClick={(e) => changeDropDownFrom(e.target.value)}>
                             {
                                 currencies.map((currency, key) => {
@@ -117,8 +117,8 @@ const InputComponent = (props) => {
                     {/* <p>test {currencyFlag.names("USD", "en")}</p> */}
                     {/*{console.log("HERE",myCurrencies.length)}*/}
                     <FormGroup>
-                        <Label>{props.placeholderTo} </Label>
-                        <Input type="select" name="select" id="exampleSelect"
+                        <Label className= "placeholderText">{props.placeholderTo} </Label>
+                        <Input style= {{backgroundColor: "rgba(102, 64, 207, 0.9)", color: "white"}} type="select" name="select" id="exampleSelect"
                                onClick={(e) => changeDropDownTo(e.target.value)}>
                             {
                                 currencies.map((currency, key) => {

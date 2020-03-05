@@ -1,5 +1,7 @@
 body {
     background-color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .card {
@@ -8,7 +10,16 @@ body {
     height: 10em;
     position: relative
 }
-
+.headerCard {
+    margin: 0;
+    position: sticky;
+    top: -22px !important;
+    height: 100%;
+}
+.illustration {
+    width: 35em;
+    float: right;
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-device-width: 320px)
